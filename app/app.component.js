@@ -2,9 +2,12 @@
   app.AppComponent =
     ng.core.Component({
       selector: 'my-app',
-      template: '<h1>My First Angular 2 App</h1>'
+      template: '<h1>{{title}}</h1><h2>{{hero}} details!</h2>'
     })
     .Class({
-      constructor: function() {}
+      constructor: function() {
+        title = 'Tour of Heroes';
+        hero = 'Windstorm';
+      }
     });
 })(window.app || (window.app = {}));
