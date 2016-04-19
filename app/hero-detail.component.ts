@@ -19,3 +19,8 @@ export class HeroDetailComponent {
   @Input() 
   hero: Hero;
 }
+
+constructor(private _heroService: HeroService) { }
+getHeroes() {
+    this.heroes = this._heroService.getHeroes();
+}

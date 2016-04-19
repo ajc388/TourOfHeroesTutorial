@@ -39,6 +39,12 @@ System.register(['angular2/core', './hero'], function(exports_1, context_1) {
                 return HeroDetailComponent;
             }());
             exports_1("HeroDetailComponent", HeroDetailComponent);
+            constructor(private, _heroService, HeroService);
+            { }
+            getHeroes();
+            {
+                this.heroes = this._heroService.getHeroes();
+            }
         }
     }
 });
