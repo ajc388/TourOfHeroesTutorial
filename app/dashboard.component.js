@@ -1,4 +1,4 @@
-System.register(['angular2/core', './hero.service', './hero'], function(exports_1, context_1) {
+System.register(['angular2/core', './hero.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['angular2/core', './hero.service', './hero'], function(exports_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, hero_service_1, hero_1;
-    var HeroDetailComponent;
+    var core_1, hero_service_1;
+    var DashboardComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -19,32 +19,30 @@ System.register(['angular2/core', './hero.service', './hero'], function(exports_
             },
             function (hero_service_1_1) {
                 hero_service_1 = hero_service_1_1;
-            },
-            function (hero_1_1) {
-                hero_1 = hero_1_1;
             }],
         execute: function() {
-            //*ngIf="variable" then populate all nested elements in this block
-            HeroDetailComponent = (function () {
-                function HeroDetailComponent(_heroService) {
+            DashboardComponent = (function () {
+                function DashboardComponent(_heroService) {
                     this._heroService = _heroService;
+                    this.heroes = [];
                 }
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', hero_1.Hero)
-                ], HeroDetailComponent.prototype, "hero", void 0);
-                HeroDetailComponent = __decorate([
+                DashboardComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this._heroService.getHeroes()
+                        .then(function (heroes) { return _this.heroes = heroes.slice(1, 5); });
+                };
+                DashboardComponent.prototype.gotoDetail = function () { };
+                DashboardComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-hero-detail',
-                        template: "\n  \t\t<div *ngIf=\"selectedHero\">\n\t      <h2>{{selectedHero.name}} details!</h2>\n\t      <div><label>id: </label>{{selectedHero.id}}</div>\n\t      <div>\n\t        <label>name: </label>\n\t        <input [(ngModel)]=\"selectedHero.name\" placeholder=\"name\"/>\n\t      </div>\n\t    </div>\n\t    "
+                        selector: 'my-dashboard',
+                        templateUrl: 'app/dashboard.component.html'
                     }), 
                     __metadata('design:paramtypes', [hero_service_1.HeroService])
-                ], HeroDetailComponent);
-                return HeroDetailComponent;
+                ], DashboardComponent);
+                return DashboardComponent;
             }());
-            exports_1("HeroDetailComponent", HeroDetailComponent);
-            ;
+            exports_1("DashboardComponent", DashboardComponent);
         }
     }
 });
-//# sourceMappingURL=hero-detail.component.js.map
+//# sourceMappingURL=dashboard.component.js.map

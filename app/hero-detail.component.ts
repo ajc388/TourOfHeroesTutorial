@@ -1,4 +1,5 @@
 import {Component, Input} from 'angular2/core';
+import {HeroService} from './hero.service';
 import {Hero} from './hero';
 
 //*ngIf="variable" then populate all nested elements in this block
@@ -16,11 +17,8 @@ import {Hero} from './hero';
 	    `
 })
 export class HeroDetailComponent {
-  @Input() 
-  hero: Hero;
-}
+	@Input() 
+	hero: Hero;
 
-constructor(private _heroService: HeroService) { }
-getHeroes() {
-    this.heroes = this._heroService.getHeroes();
-}
+  	constructor(private _heroService: HeroService) { }
+};
